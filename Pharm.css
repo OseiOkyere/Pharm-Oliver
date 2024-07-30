@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+:root {
+    --poppins: 'Poppins', sans-serif;
+    --lato: 'Lato', sans-serif;
+
+    --light: #f9f9f9;
+    --blue: #3c91e6;
+    --light-blue: #cfe8ff;
+    --grey: #eee;
+    --dark-grey: #aaa;
+    --dark: #342e37;
+    --red: #d8504a;
+}
+
+body {
+    background: var(--grey);
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 230px;
+    z-index: 1000;
+    background: var(--light);
+    font-family: var(--lato);
+    transition: 0.3s ease;
+}
+
+.sidebar.hide {
+    width: 48px;
+    overflow: hidden;
+}
+/* Logo styles */
+.sidebar .Logo {
+    font-size: 24px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+
+.sidebar .Logo .bx {
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .Logo i {
+    color: var(--red);
+}
+
+.sidebar .Logo span {
+    color: var(--blue);
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+}
+
+.sidebar .side-menu li {
+    height: 48px;
+    margin-left: 6px;
+    border-radius: 45px 0 0 48px;
+    background: transparent;
+    padding: 4px;
+}
+
+.sidebar .side-menu li.active {
+    background: var(--grey);
+    position: relative;
+}
+
+.sidebar .side-menu li.active a {
+    color: var(--blue);
+}
+
+.sidebar .side-menu li.active::before {
+    content: '';
+    position: absolute;
+    box-shadow: -20px -20px var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li.active::after {
+    content: '';
+    position: absolute;
+    box-shadow: 20px -20px var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    background: var(--light);
+    font-size: 16px;
+    color: var(--dark);
+}
+
+.sidebar .side-menu li a:hover {
+    color: var(--blue);
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: calc(60px - ((4px + 6px) * 2));
+    display: flex;
+    justify-content: center;
+}
+
+#content {
+    margin-left: 230px; 
+    width: calc(100% - 230px);
+}
+
+.sidebar.hide + #content{
+    width: calc(100% - 48px);
+    margin-left: auto;
+}
+
+#content nav {
+    position: relative;
+    height: 58px;
+    background: var(--light);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px; 
+    font-family: var(--lato);
+}
+
+#content nav::before{
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    box-shadow: -20px -20px 0 var(--light);
+    border-radius: 50%;
+    left: 0;
+    
+}
+
+#content nav i.bx.bx-menu {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: all 0.3s ease; 
+}
+
+#content nav i.bx.bx-menu:hover{
+    background: var(--grey);
+    color: var(--blue);
+    height: 40px;
+    width: 40px;
+}
+
+
+#content nav a.nav-link {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+#content nav a.nav-link:hover{
+    color: var(--blue);
+    gap: 3px;
+}
+
+#content nav form {
+    width: 100%;
+    max-width: 400px;
+    margin-right: auto; 
+}
+
+#content nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 33px;
+}
+
+#content nav form .form-input input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+#content nav form .form-input button {
+    width: 34px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue);
+    color: var(--light);
+    border: none;
+    border-radius: 0 20px 20px 0;
+    font-size: 18px;
+}
+
+#content nav .form-input button i {
+    font-size: 16px;
+}
+
+/* Notification icon styles */
+#content nav .notification {
+    position: relative;
+    margin-left: 20px;
+    font-size: 25px; 
+    color: var(--dark);
+}
+
+/* Smooth transition for the hover effect */
+#content nav .notification i.bxs-bell {
+    transition: all 0.3s ease;
+}
+
+/* Adding the bx-tada animation on hover */
+.bx-tada {
+    animation: bx-tada 1s; /* bx-tada animation */
+}
+
+/* Add this keyframes animation if not already included */
+@keyframes bx-tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+#content nav .notification .num {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: var(--red);
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+#content nav a img {
+    width: 40px; /* Adjust the size of the user image */
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px; /* Adjust margin if necessary */
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*responsive section*/
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Sidebar collapse */
+    .sidebar {
+        width: 48px;
+        overflow: hidden;
+    }
+    
+    .sidebar a .span{
+        display: none;
+    }
+    .sidebar .side-menu li a .text {
+        display: none;
+    }
+    
+    #content {
+        margin-left: 48px; 
+        width: calc(100% - 48px);
+    }
+    
+    /* Hide nav links */
+    #content nav a.nav-link {
+        display: flex;
+    }
+    
+    #content nav form {
+        width: auto;
+        max-width: 100%;
+    }
+    
+    #content nav form .form-input {
+        width: auto;
+        max-width: 100%;
+    }
+
+    /* Adjust notification icon and user image */
+    #content nav .notification {
+        margin-left: 10px;
+    }
+    
+    #content nav a img {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+    }
+
+    /* Ensure all items within nav are flexed properly */
+    #content nav {
+        gap: 10px;
+        width: 100%;
+        
+    }
+}
