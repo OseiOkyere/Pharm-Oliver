@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 a {
     text-decoration: none;
 }
@@ -16,7 +17,6 @@ li {
 :root {
     --poppins: 'Poppins', sans-serif;
     --lato: 'Lato', sans-serif;
-
     --light: #f9f9f9;
     --dark-blue: #6b6df8;
     --blue: #3c91e6;
@@ -26,12 +26,13 @@ li {
     --dark: #342e37;
     --red: #d8504a;
     --light-red: #f9d1cf;
-    --yellow:  #f1e94b;
+    --yellow: #f1e94b;
     --light-yellow: #fdf5c4;
 }
 
 body {
     background: var(--grey);
+    font-family: var(--lato);
 }
 
 /* Sidebar styles */
@@ -43,7 +44,6 @@ body {
     width: 230px;
     z-index: 1000;
     background: var(--light);
-    font-family: var(--lato);
     transition: 0.3s ease;
 }
 
@@ -51,6 +51,7 @@ body {
     width: 48px;
     overflow: hidden;
 }
+
 /* Logo styles */
 .sidebar .Logo {
     font-size: 24px;
@@ -58,8 +59,8 @@ body {
     height: 56px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
-
 
 .sidebar .Logo .bx {
     min-width: 60px;
@@ -97,17 +98,11 @@ body {
     color: var(--blue);
 }
 
-.sidebar .side-menu li.active::before {
-    content: '';
-    position: absolute;
-    box-shadow: -20px -20px var(--grey);
-    z-index: -1;
-}
-
+.sidebar .side-menu li.active::before,
 .sidebar .side-menu li.active::after {
     content: '';
     position: absolute;
-    box-shadow: 20px -20px var(--grey);
+    box-shadow: -20px -20px var(--grey), 20px -20px var(--grey);
     z-index: -1;
 }
 
@@ -137,7 +132,7 @@ body {
     width: calc(100% - 230px);
 }
 
-.sidebar.hide + #content{
+.sidebar.hide + #content {
     width: calc(100% - 48px);
     margin-left: auto;
 }
@@ -149,11 +144,10 @@ body {
     padding: 0 24px;
     display: flex;
     align-items: center;
-    gap: 0 0 2px; 
-    font-family: var(--lato);
+    gap: 2px; 
 }
 
-#content nav::before{
+#content nav::before {
     content: '';
     position: absolute;
     width: 40px;
@@ -162,7 +156,6 @@ body {
     box-shadow: -20px -20px 0 var(--light);
     border-radius: 50%;
     left: 0;
-    
 }
 
 #content nav i.bx.bx-menu {
@@ -176,13 +169,12 @@ body {
     transition: all 0.3s ease; 
 }
 
-#content nav i.bx.bx-menu:hover{
+#content nav i.bx.bx-menu:hover {
     background: var(--grey);
     color: var(--blue);
     height: 40px;
     width: 40px;
 }
-
 
 #content nav a.nav-link {
     font-size: 20px;
@@ -190,9 +182,8 @@ body {
     color: var(--dark);
 }
 
-#content nav a.nav-link:hover{
+#content nav a.nav-link:hover {
     color: var(--blue);
-    gap: 3px;
 }
 
 #content nav form {
@@ -209,6 +200,7 @@ body {
 
 #content nav form .form-input input {
     flex-grow: 1;
+    width: 100%; /* Ensure the input takes the full width */
     padding: 0 16px;
     height: 100%;
     border: none;
@@ -218,6 +210,7 @@ body {
 }
 
 #content nav form .form-input button {
+    flex-shrink: 0; /* Prevent the button from shrinking */
     width: 34px;
     height: 100%;
     display: flex;
@@ -234,7 +227,6 @@ body {
     font-size: 16px;
 }
 
-
 #content nav .notification {
     position: relative;
     margin-left: 20px;
@@ -242,17 +234,14 @@ body {
     color: var(--dark);
 }
 
-
 #content nav .notification i.bxs-bell {
     transition: all 0.3s ease;
 }
-
 
 .bx-tada {
     animation: bx-tada 1s;
 }
 
-/* Add this keyframes animation if not already included */
 @keyframes bx-tada {
     0% { transform: scale(1); }
     10%, 20% { transform: scale(0.9) rotate(-3deg); }
@@ -280,103 +269,83 @@ body {
 }
 
 #content main {
-    width: 100%;
-    padding: 13px;
-    margin: 13px;
+    padding: 2px;
     display: grid;
-    gap: 34px;
-}
-
-#content main .box-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 10px;
-}
-
-#content main .box-info li {
-    transition: transform 0.5s ease-in-out; /* Specify the transform property with smooth easing */
-}
-
-#content main .box-info li:hover {
-    transform: translateY(-10px); /* Move up by 10px on hover */
-}
-
-
-#content main .box-info li {
-    padding: 24px;
-    background: var(--light);
-    border-radius: 20px;
-    display: flex;
-    gap: 24px;
-}
-
-#content main .box-info li a{
-    font-weight: 900;
-    font-size: 1000;
-
-}
-
-#content main .box-info li .bx {
-    width: 80px;
-    height: 80px;
-    border-radius: 10px;
-    display: flex;
+    flex-direction: column; /* Align items vertically */
     justify-content: center;
-    align-items: center;
-    font-size: 36px;
-    cursor: pointer;
-    
-}
-
-#content main .box-info li:nth-child(1) .bx {
-    background: var(--light-blue);
-    color: var(--blue);
-}
-
-#content main .box-info li:nth-child(2) .bx {
-    background: var(--light-yellow);
-    color: var(--yellow);
-}
-
-#content main .box-info li:nth-child(3) .bx {
-    background: var(--light-red);
-    color: var(--red);
-}
-
-/* Chart Container Styles */
-#content main .chartContainer {
     width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: var(--light);
-    position: relative;
 }
 
-#content main .chartContainer .title{
-    padding: 10px;
+#content main .container {
+    display: grid;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    margin: 23px;
+    padding: 23px;
+    background: var(--light);
+    border: none;
+    border-radius: 12px;
+    align-items: center;
+}
+
+#content main .container .form-title {
+    font-size: 24px;
+    font-family: var(--poppins);
+    text-align: center;
+}
+
+
+#content main .container .form-input p{
+    display: flex;
+    padding: 6px;
+}
+#content main .container .form-input .dob-content button{
     display: flex;
     justify-content: space-between;
-    color: var(--dark-grey);
     cursor: pointer;
 }
+#content main .container .form-input {
+    width: 100%;
+    font-size: 20px;
+    margin-bottom:2px;
+    display: grid;
 
-#content main .chartContainer .title :hover{
-    color: var(--dark);
+    padding: 10px;
+    margin-bottom: 10px;
+    flex-direction: column; /* Stack input fields vertically */
 }
 
+#content main .container .form-input input {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    margin: 0;
+    border-radius: 4px;
+    border: 1px solid var(--grey);
+}
 
-#content main .chartContainer .switch-btns i {
-    width: 80px;
-    height: 25px;
-    border-radius: 3px;
+/* Buttons container */
+#content main .container .form-input .dob-content {
     display: flex;
-    background: var(--blue);
-    color: var(--light);
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 6px; 
+}
+
+#content main .container .form-input .dob-content button {
+    width: fit-content;
+    padding: 8px 16px;
     border: none;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
+    border-radius: 4px;
+    background-color: var(--blue);
+    color: var(--light);
+    font-size: 16px;
     cursor: pointer;
+}
+
+#content main .container .form-input .dob-content button:hover {
+    background-color: var(--dark-blue);
 }
 
 #content main .developer-name{
@@ -429,60 +398,4 @@ body {
 
 #content main .developer-name .social-icons i:nth-child(4):hover {
     color: var(--light); /* Tiktok */
-} 
-
-
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    /* Sidebar collapse */
-    .sidebar {
-        width: 48px;
-        overflow: hidden;
-    }
-    
-    .sidebar a .span{
-        display: none;
-    }
-    .sidebar .side-menu li a .text {
-        display: none;
-    }
-    
-    #content {
-        margin-left: 48px; 
-        width: calc(100% - 48px);
-    }
-    
-    /* Hide nav links */
-    #content nav a.nav-link {
-        display: flex;
-    }
-    
-    #content nav form {
-        width: auto;
-        max-width: 100%;
-    }
-    
-    #content nav form .form-input {
-        width: auto;
-        max-width: 100%;
-    }
-
-    /* Adjust notification icon and user image */
-    #content nav .notification {
-        margin-left: 10px;
-    }
-    
-    #content nav a img {
-        width: 30px;
-        height: 30px;
-        margin-left: 10px;
-    }
-
-    /* Ensure all items within nav are flexed properly */
-    #content nav {
-        gap: 10px;
-        width: 100%;
-        
-    }
 }

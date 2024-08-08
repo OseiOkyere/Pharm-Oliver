@@ -33,18 +33,18 @@ menuBar.addEventListener('click', function() {
   sidebar.classList.toggle('hide');
 });
 
-
+/*
 document.addEventListener("DOMContentLoaded", function() {
   const menuBar = document.querySelector('#content nav .bx.bx-menu');
   const sidebar = document.querySelector('.sidebar');
 
   menuBar.addEventListener('click', function() {
-      if (sidebar.classList.contains('hide')) {
+      if (sidebar.classList.contains('hide') when minized) {
           alert('Maximize Page to enable function');
       }
       sidebar.classList.toggle('hide');
   });
-});
+});*/
 
 
 // Query ---- for ---- userFirstname---
@@ -58,7 +58,7 @@ function fetchFirstName() {
   });
 }
 
-// userFirstname Display
+/*userFirstname Display
 window.onload = async function() {
   try {
     const firstName = await fetchFirstName();
@@ -78,3 +78,4 @@ TESTER = document.getElementById('tester');
 	x: [1, 2, 3, 4, 5],
 	y: [1, 2, 4, 8, 16] }], {
 	margin: { t: 0 } } );
+  */

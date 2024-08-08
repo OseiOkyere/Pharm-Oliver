@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Pharm.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>HomePage</title>
+    <title>Home | Dashboard</title>
 </head>
 <body>
    
         <section  class="sidebar">
             <a href="#" class="Logo">
                 <i class='bx bxs-color'></i>
-                <span>IO's Groups</span>
             </a>
 
             <ul class="side-menu top">
@@ -21,19 +20,11 @@
                 </li>
 
                 <li>
-                    <a href="#"><i class='bx bxs-user-account'></i><span class="text">Users</span></a>
+                    <a href="orders.html"><i class='bx bx-receipt bx-flip-horizontal' ></i><span class="text">Orders</span></a>
                 </li>
 
                 <li>
-                    <a href="#"><i class='bx bx-receipt bx-flip-horizontal' ></i><span class="text">Orders</span></a>
-                </li>
-
-                <li>
-                    <a href="#"><i class='bx bx-building-house' ></i><span class="text">Manufacturer</span></a>
-                </li>
-
-                <li>
-                    <a href="#"><i class='bx bx-book-add' ></i><span class="text">Add User</span></a>
+                    <a href="User.html"><i class='bx bx-book-add' ></i><span class="text">Add User</span></a>
                 </li>
 
                 
@@ -70,12 +61,59 @@
             </nav>
 
             <main>
-                <div class="titleHead">
-                    <h1>Pharm Overview</h1>
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-calendar-check' ></i>
+                        <span class="text">
+                        <a>020 </a>
+                        <p>Sales</p>
+                        </span>
+                    </li>
 
+                    <li>
+                        <i class='bx bxs-box' ></i>
+                        <span class="text">
+                        <a>120 </a>
+                        <p>Products</p>
+                        </span>
+                    </li>
 
+                    <li>
+                        <i class='bx bxs-cart-download' ></i>
+                        <span class="text">
+                        <a>102 </a>
+                        <p>Purchases</p>
+                        </span>
+                    </li>
+                </ul>
+ 
+                <div class="chartContainer">
+                    <div class="title">
+                        <h1>Sales Overview</h1>
+                        <ul class="switch-btns">
+                            <button class="btn"><i class='bx bxs-cloud-download' ></i></button>
+                        </ul>
+                    </div>
+
+                    <div class="current-window" id="currentWindow">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
                 </div>
+                
+
+                <!-- Footer -->
+                <footer class="developer-name">
+                    <p class="copy-writes">&copy; 2024 FirstCode Inc. All rights reserved.</p>
+
+                    <div class="social-icons">
+                        <i class='bx bxl-facebook-circle' ></i>
+                        <i class='bx bxl-youtube' ></i>
+                        <i class='bx bxl-twitter' ></i>
+                        <i class='bx bxl-tiktok' ></i>
+                    </div>
+                  </footer>
             </main>
+
         </section>
         
    <script src="Pharm.js"></script>
