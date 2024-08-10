@@ -1,8 +1,9 @@
+<?php
 // Database credentials
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "pharmacy_db";
+$database = "pharma_db";
 
 try {
     // Create a new PDO instance
@@ -12,3 +13,8 @@ try {
     if ($conn->connect_error) {
         throw new Exception("Connection failed: " . $conn->connect_error);
     }
+} catch (Exception $e) {
+    echo json_encode(["error" => $e->getMessage()]);
+    exit();
+}
+?>
