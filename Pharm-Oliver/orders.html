@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="orders.css">
+    <title>Orders ||IOS Group - Pharmacy</title>
+</head>
+<body>
+
+
+    <section  class="sidebar">
+        <a href="#" class="Logo">
+            <i class='bx bxs-color'></i>
+        </a>
+
+        <ul class="side-menu top">
+            <li>
+                <a href="#"><i class='bx bxs-dashboard'></i><span class="text">Dashboard</span></a>
+            </li>
+
+            <li class="active">
+                <a href="#"><i class='bx bx-receipt bx-flip-horizontal' ></i><span class="text">Orders</span></a>
+            </li>
+
+            <li>
+                <a href="#"><i class='bx bx-book-add' ></i><span class="text">Add User</span></a>
+            </li>
+
+            
+            <li>
+                <a href="#"><i class='bx bx-cog' ></i><span class="text">Settings</span></a>
+            </li>
+
+            <li>
+                <a href="#"><i class='bx bx-log-out bx-flip-horizontal'></i><span class="text">Logout</span></a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu' ></i>
+            <a href="#" class="nav-link">Pharmacy</a>
+            <form action="#">
+                <div class="form-input">
+                     <input type="search" placeholder="search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+
+            <a href="#" class="notification">
+                <i class='bx bxs-bell' ></i>
+                <span class="num">10</span>
+            </a>
+
+            <a href="#">
+                <img src="PhamIMG/Lawrencia.jpg" alt="User-image">
+            </a>
+
+        </nav>
+    <section class="content">
+        <main>
+            <form action="" class="container">
+                
+                <div class="form-title">
+                    <h2>Order Details</h2>
+                </div>
+
+                <div class="form-input">
+                    <div class="Name-content">
+                        <p>Name:</p>
+                        <input type="text" name="company-name" placeholder="Producer Name" required>
+                        <p>
+                        <span>Drug</span>
+                        <input type="text" name="drug-name" placeholder="Drug Name" required>
+                        <input type="number" name="drugQuantity" placeholder="Quantity" required>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-input">
+                    <div class="date-content">
+                        <p>Expiery Date:</p>
+                        <input type="date" name="expiery-date" required>
+                        </p>
+                        <span>Date of Purchases</span>
+                        <input type="date" name="order-date" required>
+                    </div>
+                </div>
+
+                <div class="form-input">
+                    <div class="rc-content">
+                        <p>Reference:</p>
+                        <input type="text" name="orderNumber" placeholder="Order number" required>
+                        <input type="number" name="invoice" placeholder="invoice number" required>
+
+                        <div class="comment-section">
+                            <h2>Comments</h2>
+                            <form id="commentForm">
+                                <textarea id="commentText" placeholder="Write your comment here on the oders received..." required></textarea>
+                                <button type="submit">Submit Comment</button>
+                            </form>
+                        
+                            <div class="comments" id="commentsList">
+                                <!-- Comments will be appended here -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>               
+
+            </form>
+
+            <!-- Footer -->
+            <footer class="developer-name">
+                <p class="copy-writes">&copy; 2024 FirstCode Inc. All rights reserved.</p>
+
+                <div class="social-icons">
+                    <i class='bx bxl-facebook-circle' ></i>
+                    <i class='bx bxl-youtube' ></i>
+                    <i class='bx bxl-twitter' ></i>
+                    <i class='bx bxl-tiktok' ></i>
+                </div>
+              </footer>
+
+        </main>
+
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management System</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* Transition for smooth sidebar toggling */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+
+        /* Collapsed sidebar styles */
+        .sidebar-collapsed {
+            width: 80px;
+        }
+
+        .sidebar-collapsed .nav-text {
+            display: none;
+        }
+
+        /* Expanded sidebar */
+        .sidebar-expanded {
+            width: 256px;
+        }
+
+        /* Adjust main content when sidebar is collapsed */
+        #main-content {
+            margin-left:20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Adjust main content when sidebar is collapsed */
+        .content-expanded {
+            margin-left: 80px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="bg-blue-800 text-white min-h-full flex flex-col transition-all sidebar-expanded relative">
+
+        <!-- Hamburger Icon -->
+        <div id="hamburger" class="absolute top-4 right-4 cursor-pointer">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="p-4 font-bold text-xl border-b border-blue-700 flex items-center justify-center">
+            <i class="fas fa-pills mr-2"></i>
+            <span class="nav-text">Pharmacy</span>
+        </div>
+
+        <nav class="flex-grow p-4">
+            <ul>
+                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="./dashboard/dashboard.php">
+                    <i class="fas fa-tachometer-alt"></i> <span class="nav-text">Dashboard</span>
+                </li>
+                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="products">
+                    <i class="fas fa-boxes"></i> <span class="nav-text">Products</span>
+                </li>
+                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="invoices">
+                    <i class="fas fa-file-invoice"></i> <span class="nav-text">Invoices</span>
+                </li>
+                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="sales">
+                    <i class="fas fa-cash-register"></i> <span class="nav-text">Sales</span>
+                </li>
+                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="categories">
+                    <i class="fas fa-list"></i> <span class="nav-text">Categories</span>
+                </li>
+                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="suppliers">
+                    <i class="fas fa-truck"></i> <span class="nav-text">Suppliers</span>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t border-blue-700">
+            <button class="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded">
+                <i class="fas fa-sign-out-alt"></i> <span class="nav-text">Logout</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="flex-grow p-8 overflow-auto transition-all">
+        <!-- AJAX-loaded content will appear here -->
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Function to load the page based on the given page URL
+            function loadPage(page) {
+                $('#main-content').load(`${page}`);
+                localStorage.setItem('currentPage', page);
+            }
+
+            // Load the last visited page or the default dashboard page
+            const lastPage = localStorage.getItem('currentPage') || './dashboard/dashboard.php';
+            loadPage(lastPage);
+
+            // Toggle Sidebar
+            $('#hamburger').click(function () {
+                $('#sidebar').toggleClass('sidebar-expanded sidebar-collapsed');
+                $('#main-content').toggleClass('content-expanded');
+            });
+
+            // Load page content via AJAX and store in localStorage
+            $('nav li').click(function () {
+                const page = $(this).data('page');
+                loadPage(page);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

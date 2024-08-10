@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+:root {
+    --poppins: 'Poppins', sans-serif;
+    --lato: 'Lato', sans-serif;
+    --light: #f9f9f9;
+    --dark-blue: #6b6df8;
+    --blue: #3c91e6;
+    --light-blue: #cfe8ff;
+    --grey: #eee;
+    --dark-grey: #aaa;
+    --dark: #342e37;
+    --red: #d8504a;
+    --light-red: #f9d1cf;
+    --yellow: #f1e94b;
+    --light-yellow: #fdf5c4;
+}
+
+body {
+    background: var(--grey);
+    font-family: var(--lato);
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 230px;
+    z-index: 1000;
+    background: var(--light);
+    transition: 0.3s ease;
+}
+
+.sidebar.hide {
+    width: 48px;
+    overflow: hidden;
+}
+
+/* Logo styles */
+.sidebar .Logo {
+    font-size: 24px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .Logo .bx {
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .Logo i {
+    color: var(--red);
+}
+
+.sidebar .Logo span {
+    color: var(--blue);
+}
+
+.sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+}
+
+.sidebar .side-menu li {
+    height: 48px;
+    margin-left: 6px;
+    border-radius: 45px 0 0 48px;
+    background: transparent;
+    padding: 4px;
+}
+
+.sidebar .side-menu li.active {
+    background: var(--grey);
+    position: relative;
+}
+
+.sidebar .side-menu li.active a {
+    color: var(--blue);
+}
+
+.sidebar .side-menu li.active::before,
+.sidebar .side-menu li.active::after {
+    content: '';
+    position: absolute;
+    box-shadow: -20px -20px var(--grey), 20px -20px var(--grey);
+    z-index: -1;
+}
+
+.sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    background: var(--light);
+    font-size: 16px;
+    color: var(--dark);
+}
+
+.sidebar .side-menu li a:hover {
+    color: var(--blue);
+}
+
+.sidebar .side-menu li a .bx {
+    min-width: calc(60px - ((4px + 6px) * 2));
+    display: flex;
+    justify-content: center;
+}
+
+#content {
+    margin-left: 230px; 
+    width: calc(100% - 230px);
+}
+
+.sidebar.hide + #content {
+    width: calc(100% - 48px);
+    margin-left: auto;
+}
+
+#content nav {
+    position: relative;
+    height: 58px;
+    background: var(--light);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 2px; 
+}
+
+#content nav::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: -40px;
+    box-shadow: -20px -20px 0 var(--light);
+    border-radius: 50%;
+    left: 0;
+}
+
+#content nav i.bx.bx-menu {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: all 0.3s ease; 
+}
+
+#content nav i.bx.bx-menu:hover {
+    background: var(--grey);
+    color: var(--blue);
+    height: 40px;
+    width: 40px;
+}
+
+#content nav a.nav-link {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+#content nav a.nav-link:hover {
+    color: var(--blue);
+}
+
+#content nav form {
+    width: 100%;
+    max-width: 400px;
+    margin-right: auto; 
+}
+
+#content nav form .form-input {
+    display: flex;
+    align-items: center;
+    height: 33px;
+}
+
+#content nav form .form-input input {
+    flex-grow: 1;
+    width: 100%; /* Ensure the input takes the full width */
+    padding: 0 16px;
+    height: 100%;
+    border: none;
+    background: var(--grey);
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+#content nav form .form-input button {
+    flex-shrink: 0; /* Prevent the button from shrinking */
+    width: 34px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue);
+    color: var(--light);
+    border: none;
+    border-radius: 0 20px 20px 0;
+    font-size: 18px;
+}
+
+#content nav .form-input button i {
+    font-size: 16px;
+}
+
+#content nav .notification {
+    position: relative;
+    margin-left: 20px;
+    font-size: 25px; 
+    color: var(--dark);
+}
+
+#content nav .notification i.bxs-bell {
+    transition: all 0.3s ease;
+}
+
+.bx-tada {
+    animation: bx-tada 1s;
+}
+
+@keyframes bx-tada {
+    0% { transform: scale(1); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+    40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+#content nav .notification .num {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: var(--red);
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+#content nav a img {
+    width: 40px; /* Adjust the size of the user image */
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 20px; /* Adjust margin if necessary */
+}
+
+#content main {
+    padding: 2px;
+    display: grid;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center;
+    width: 100%;
+}
+
+#content main .container {
+    display: grid;
+    flex-direction: column; /* Align items vertically */
+    justify-content: center;
+    width: 100%;
+    height: fit-content;
+    margin: 23px;
+    padding: 23px;
+    background: var(--light);
+    border: none;
+    border-radius: 12px;
+    align-items: center;
+}
+
+#content main .container .form-title {
+    font-size: 24px;
+    font-family: var(--poppins);
+    text-align: center;
+}
+
+
+#content main .container .form-input p{
+    display: flex;
+    padding: 6px;
+}
+#content main .container .form-input .dob-content button{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+#content main .container .form-input {
+    width: 100%;
+    font-size: 20px;
+    margin-bottom:2px;
+    display: grid;
+
+    padding: 10px;
+    margin-bottom: 10px;
+    flex-direction: column; /* Stack input fields vertically */
+}
+
+#content main .container .form-input input {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    margin: 0;
+    border-radius: 4px;
+    border: 1px solid var(--grey);
+}
+
+/* Buttons container */
+#content main .container .form-input .dob-content {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 6px; 
+}
+
+#content main .container .form-input .dob-content button {
+    width: fit-content;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--blue);
+    color: var(--light);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#content main .container .form-input .dob-content button:hover {
+    background-color: var(--dark-blue);
+}
+
+#content main .developer-name{
+    display: flex;
+    grid-gap: 7px;
+    justify-content: center;
+    align-items: center;
+}
+
+#content main .developer-name .copy-writes{
+    cursor: pointer;
+    color: var(--color-dark-grey);
+    transition: all 0.3s;
+}
+
+#content main .developer-name .copy-writes :hover{
+    color: var(--dark-blue);
+}
+
+
+#content main .developer-name .social-icons{
+    padding: 3px;
+    font-size: 23px;
+    display: flex;
+    grid-gap: 15px;
+    cursor: pointer;
+}
+
+#content main .developer-name .social-icons i :hover{
+    height: 33px;
+    width: 33px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+    font-size: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+#content main .developer-name .social-icons i:nth-child(1):hover {
+    color: var(--blue); /* Facebook */
+    
+}
+#content main .developer-name .social-icons i:nth-child(2):hover {
+    color: var(--red); /* Youtube */
+}
+#content main .developer-name .social-icons i:nth-child(3):hover {
+    color: var(--blue); /* Twitter */
+}
+
+#content main .developer-name .social-icons i:nth-child(4):hover {
+    color: var(--light); /* Tiktok */
+}
