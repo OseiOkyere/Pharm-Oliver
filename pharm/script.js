@@ -1,39 +1,37 @@
+
 $(document).ready(function () {
     // Function to load the page based on the given page URL
     function loadPage(page) {
-        $('#main-content').load(`${page}`, function () {
-            console.log('Loading: ', {page});
-         
-        }).on('load', function() {
-            // Check if the page has loaded 100%
-            if (this.readyState === 'complete') {
+        $('#main-content').load(page, function (response, status, xhr) {
+            if (status == "error") {
+                console.error(`Could not load ${page}: ${xhr.status} ${xhr.statusText}`);
+            } else {
                 // Initialize scripts based on the loaded page
                 if (page === './dashboard/dashboard.php') {
                     initializeDashboardScripts();
                 } else if (page === './products/index.php') {
-                    // Initialize products-related scripts
                     initializeProductScripts();
                 } else if (page === './sales/index.php') {
-                    // Initialize sales-related scripts
                     initializeSalesScripts();
                 } else if (page === './categories/index.php') {
-                    // Initialize categories-related scripts
                     initializeCategoryScripts();
                 } else if (page === './suppliers/index.php') {
-                    // Initialize suppliers-related scripts
                     initializeSupplierScripts();
                 }
-                console.log({page}, 'loaded successfully');
-                 // Store the last opened page in localStorage
+
+                console.log(`${page} loaded successfully`);
+
+                // Store the last opened page in localStorage
                 localStorage.setItem('currentPage', page);
-            }else{
-                console.log("Load error, ready state not complete");
+
+                // Remove active class from all links
+                $('nav li').removeClass('bg-gray-700 text-white');
+
+                // Highlight the active link
+                $(`[data-page="${page}"]`).addClass('bg-gray-700 text-white');
             }
         });
     }
-
-       
-    
 
     // Load the last visited page or the default dashboard page
     const lastPage = localStorage.getItem('currentPage') || './dashboard/dashboard.php';
@@ -49,20 +47,12 @@ $(document).ready(function () {
     $('nav li').click(function () {
         const page = $(this).data('page');
         loadPage(page);
-
-        // Remove active class from all links
-        $('nav li').removeClass('bg-gray-700 text-white');
-
-        // Add active class to the clicked link
-        $(this).addClass('bg-gray-700 text-white');
     });
 
     // Highlight the active sidebar link on page load
-    const activeLink = $(`[data-page="${lastPage}"]`);
-    if (activeLink) {
-        activeLink.addClass('bg-gray-700 text-white');
-    }
+    $(`[data-page="${lastPage}"]`).addClass('bg-gray-700 text-white');
 });
+
 
 
 
