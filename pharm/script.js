@@ -2,28 +2,38 @@ $(document).ready(function () {
     // Function to load the page based on the given page URL
     function loadPage(page) {
         $('#main-content').load(`${page}`, function () {
-            // Initialize scripts based on the loaded page
-            if (page === './dashboard/dashboard.php') {
-                initializeDashboardScripts();
-            } else if (page === './products/index.php') {
-                // Initialize products-related scripts
-                initializeProductScripts();
-            } else if (page === './sales/index.php') {
-                // Initialize sales-related scripts
-                initializeSalesScripts();
-            } else if (page === './categories/index.php') {
-                // Initialize categories-related scripts
-                initializeCategoryScripts();
-            } else if (page === './suppliers/index.php') {
-                // Initialize suppliers-related scripts
-                initializeSupplierScripts();
+            console.log('Loading: ', {page});
+         
+        }).on('load', function() {
+            // Check if the page has loaded 100%
+            if (this.readyState === 'complete') {
+                // Initialize scripts based on the loaded page
+                if (page === './dashboard/dashboard.php') {
+                    initializeDashboardScripts();
+                } else if (page === './products/index.php') {
+                    // Initialize products-related scripts
+                    initializeProductScripts();
+                } else if (page === './sales/index.php') {
+                    // Initialize sales-related scripts
+                    initializeSalesScripts();
+                } else if (page === './categories/index.php') {
+                    // Initialize categories-related scripts
+                    initializeCategoryScripts();
+                } else if (page === './suppliers/index.php') {
+                    // Initialize suppliers-related scripts
+                    initializeSupplierScripts();
+                }
+                console.log({page}, 'loaded successfully');
+                 // Store the last opened page in localStorage
+                localStorage.setItem('currentPage', page);
+            }else{
+                console.log("Load error, ready state not complete");
             }
-
         });
-
-        // Store the last opened page in localStorage
-        localStorage.setItem('currentPage', page);
     }
+
+       
+    
 
     // Load the last visited page or the default dashboard page
     const lastPage = localStorage.getItem('currentPage') || './dashboard/dashboard.php';

@@ -157,6 +157,7 @@
             </table>
         </div>
 
+        
         <!-- Inventory Levels Section -->
         <div class="bg-white p-6 rounded-lg shadow">
             <h1 class="text-xl font-bold mb-4">Inventory Levels</h1>
