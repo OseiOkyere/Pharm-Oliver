@@ -37,7 +37,6 @@
 
         /* Adjust main content when sidebar is collapsed */
         #main-content {
-            margin-left:20px;
             transition: margin-left 0.3s ease;
         }
 
@@ -65,19 +64,19 @@
 
         <nav class="flex-grow p-4">
             <ul>
-                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="./dashboard/dashboard.php">
+                <li class="sidebar-link py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="./dashboard/dashboard.php">
                     <i class="fas fa-tachometer-alt"></i> <span class="nav-text">Dashboard</span>
                 </li>
-                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="products">
+                <li class="sidebar-link py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="products">
                     <i class="fas fa-boxes"></i> <span class="nav-text">Products</span>
                 </li>
-                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="sales">
+                <li class="sidebar-link py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="sales">
                     <i class="fas fa-cash-register"></i> <span class="nav-text">Sales</span>
                 </li>
-                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="categories">
+                <li class="sidebar-link py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="categories">
                     <i class="fas fa-list"></i> <span class="nav-text">Categories</span>
                 </li>
-                <li class="py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="suppliers">
+                <li class="sidebar-link py-2 px-4 hover:bg-blue-700 cursor-pointer" data-page="suppliers">
                     <i class="fas fa-truck"></i> <span class="nav-text">Suppliers</span>
                 </li>
             </ul>
@@ -94,44 +93,9 @@
         <!-- AJAX-loaded content will appear here -->
     </div>
 
+    <!-- Script -->
     <script src="./script.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Function to load the page based on the given page URL
-            function loadPage(page) {
-                $('#main-content').load(`${page}`);
-                localStorage.setItem('currentPage', page);
-            }
-
-            // Load the last visited page or the default dashboard page
-            const lastPage = localStorage.getItem('currentPage') || './dashboard/dashboard.php';
-            loadPage(lastPage);
-
-            // Toggle Sidebar
-            $('#hamburger').click(function () {
-                $('#sidebar').toggleClass('sidebar-expanded sidebar-collapsed');
-                $('#main-content').toggleClass('content-expanded');
-            });
-
-            // Load page content via AJAX and store in localStorage
-            $('nav li').click(function () {
-                const page = $(this).data('page');
-                loadPage(page);
-            });
-
-            if(lastPage === "./dashboard/dashboard.php"){
-                loadDashboardData;
-            }
-
-            // Load data when the page is ready
-        window.onload = loadDashboardData;
-
-
-
-        });
-    </script>
-   
- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

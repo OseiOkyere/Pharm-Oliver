@@ -133,29 +133,7 @@
                 </button>
             </div>
             <canvas id="salesChart"></canvas>
-            <script>
-                const ctx = document.getElementById('salesChart').getContext('2d');
-                const salesChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [<?php foreach ($sales_data as $data) { echo '"' . $data['month'] . '", '; } ?>],
-                        datasets: [{
-                            label: 'Total Sales',
-                            data: [<?php foreach ($sales_data as $data) { echo $data['total_sales'] . ', '; } ?>],
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            </script>
+        
         </div>
 
         <!-- Top Selling Products Section -->
