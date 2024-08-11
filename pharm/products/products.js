@@ -139,8 +139,8 @@ $(document).ready(function () {
         $('#swal2-html-container #description').val(description);
         $('#swal2-html-container #price').val(price);
         $('#swal2-html-container #quantity').val(quantity);
-        $('#swal2-html-container #category').val(category);
-        $('#swal2-html-container #supplier').val(supplier);
+        $('#swal2-html-container #category').val(category).change();
+        $('#swal2-html-container #supplier').val(supplier).change();
     });
 
     // Delete Product
