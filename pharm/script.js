@@ -90,7 +90,7 @@ function initializeDashboardScripts() {
     }
 
 }
-
+/* 
 function initializeProductScripts(){
 
     function loadProducts() {
@@ -267,4 +267,4 @@ function initializeProductScripts(){
 
     // Initialize product list
     loadProducts();
-}
+} */
