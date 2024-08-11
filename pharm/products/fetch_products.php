@@ -1,22 +1,52 @@
 <?php
-
+// Include database connection
 include("../connection/db_connection.php");
 
-$sql = "SELECT products.id, products.name, products.description, products.price, products.quantity, 
-        categories.name as category, suppliers.name as supplier 
-        FROM products 
-        LEFT JOIN categories ON products.category_id = categories.id 
-        LEFT JOIN suppliers ON products.supplier_id = suppliers.id";
+// Fetch products
+$sql = "SELECT p.id, p.name, p.description, p.price, p.quantity, c.name AS category, s.name AS supplier, p.created_at 
+        FROM products p 
+        LEFT JOIN categories c ON p.category_id = c.id 
+        LEFT JOIN suppliers s ON p.supplier_id = s.id";
 $result = $conn->query($sql);
 
-$products = array();
+$products = [];
 if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+    while($row = $result->fetch_assoc()) {
         $products[] = $row;
     }
 }
 
-echo json_encode($products);
+// Fetch categories
+$sql = "SELECT id, name FROM categories";
+$result = $conn->query($sql);
 
+$categories = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $categories[] = $row;
+    }
+}
+
+// Fetch suppliers
+$sql = "SELECT id, name FROM suppliers";
+$result = $conn->query($sql);
+
+$suppliers = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $suppliers[] = $row;
+    }
+}
+
+// Combine the results
+$response = [
+    'products' => $products,
+    'categories' => $categories,
+    'suppliers' => $suppliers,
+];
+
+echo json_encode($response);
+
+// Close the database connection
 $conn->close();
 ?>

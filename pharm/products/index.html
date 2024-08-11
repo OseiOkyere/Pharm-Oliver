@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Management System</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <!-- Add Product Button and Search Bar -->
+    <div class="flex justify-between mb-4">
+        <button id="add-product-btn" class="bg-blue-600 text-white px-4 py-2 rounded">Add Product</button>
+        <input type="text" id="search-bar" placeholder="Search products..." class="border px-4 py-2 rounded">
+    </div>
+
+    <!-- Products Table -->
+    <div class="overflow-x-auto">
+        <table id="products-table" class="min-w-full bg-white border rounded">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="py-2 px-4">ID</th>
+                    <th class="py-2 px-4">Name</th>
+                    <th class="py-2 px-4">Description</th>
+                    <th class="py-2 px-4">Price</th>
+                    <th class="py-2 px-4">Quantity</th>
+                    <th class="py-2 px-4">Category</th>
+                    <th class="py-2 px-4">Supplier</th>
+                    <th class="py-2 px-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="products-body">
+                <!-- Products will be loaded here by JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Hidden Add/Edit Product Modal Template -->
+    <div id="add-product-modal" style="display: none;">
+        <form id="product-form">
+            <input type="hidden" id="product-id">
+            <div class="mb-4">
+                <label for="name" class="block">Name:</label>
+                <input type="text" id="name" class="border w-full px-2 py-1 rounded">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block">Description:</label>
+                <textarea id="description" class="border w-full px-2 py-1 rounded"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block">Price:</label>
+                <input type="number" id="price" class="border w-full px-2 py-1 rounded">
+            </div>
+            <div class="mb-4">
+                <label for="quantity" class="block">Quantity:</label>
+                <input type="number" id="quantity" class="border w-full px-2 py-1 rounded">
+            </div>
+            <div class="mb-4">
+                <label for="category" class="block">Category:</label>
+                <select id="category" class="border w-full px-2 py-1 rounded"></select>
+            </div>
+            <div class="mb-4">
+                <label for="supplier" class="block">Supplier:</label>
+                <select id="supplier" class="border w-full px-2 py-1 rounded"></select>
+            </div>
+        </form>
+    </div>
+
+    <script src="./products/products.js"></script>
+</body>
+
+</html>
