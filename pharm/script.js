@@ -95,7 +95,7 @@ function initializeProductScripts(){
 
     function loadProducts() {
         $.ajax({
-            url: '../products/fetch_products.php',
+            url: './products/fetch_products.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
