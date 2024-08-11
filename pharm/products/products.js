@@ -134,6 +134,7 @@ $(document).ready(function () {
             }
         });
 
+        
         // Populate the modal with the existing product data
         $('#swal2-html-container #name').val(name);
         $('#swal2-html-container #description').val(description);
