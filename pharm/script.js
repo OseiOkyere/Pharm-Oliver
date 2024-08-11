@@ -267,4 +267,4 @@ function initializeProductScripts(){
 
     // Initialize product list
     loadProducts();
-} */
+} 
